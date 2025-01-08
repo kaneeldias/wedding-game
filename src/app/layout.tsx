@@ -25,7 +25,7 @@ export default function RootLayout({
         <Image src={'/rb_24436.png'} alt={"Flowers"} width={200} height={200}
                className={`fixed w-[250px] top-10 -right-28 hue-rotate-90 rotate-[80deg]`}
         />
-        <div className={`flex flex-col w-full h-screen`}>
+        <div className={`flex flex-col w-full h-screen text-black ${roboto.className}`}>
             {children}
         </div>
         </body>

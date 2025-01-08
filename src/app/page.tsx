@@ -1,6 +1,7 @@
 "use client"
 
 import {alexBrush} from "@/fonts";
+import Button from "@/components/Button";
 
 export default function Home() {
     return (
@@ -11,12 +12,9 @@ export default function Home() {
             <div className={`${alexBrush.className} text-black text-6xl opacity-60`}>
                 Rasika & Savidu
             </div>
-            <button onClick={() => {
-                alert("The wedding game is not ready yet!")
-            }}
-                    className={`mt-10 flex bg-white bg-opacity-50 rounded-md p-2 px-4 text-emerald-800 font-bold hover:text-white hover:bg-emerald-800 transition-all`}>
-                PLAY THE WEDDING GAME
-            </button>
+            <a href={"/instructions"}>
+                <Button>play the wedding game</Button>
+            </a>
         </div>
     );
 }
