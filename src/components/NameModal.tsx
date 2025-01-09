@@ -4,7 +4,11 @@ import {Button, Modal, TextInput} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 import {useEffect, useState} from "react";
 
-export default function NameModal() {
+type Props = {
+    setName: (name: string) => void;
+}
+
+export default function NameModal(props: Props) {
     const [opened, {open, close}] = useDisclosure(false);
     const [nameInput, setNameInput] = useState("");
     const [error, setError] = useState("");
@@ -29,6 +33,7 @@ export default function NameModal() {
     
     function submitName() {
         localStorage.setItem("name", nameInput);
+        props.setName(nameInput);
         close();
     }
     
