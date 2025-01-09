@@ -26,7 +26,7 @@ export default function Home() {
                 </div>
             </div>
             
-            <Button>let&#39;s play</Button>
+            <a href={"/dashboard"}><Button>let&#39;s play</Button></a>
         </div>
     );
 }
