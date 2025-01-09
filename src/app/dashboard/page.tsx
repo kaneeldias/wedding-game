@@ -7,8 +7,15 @@ import {Task} from "@/types/task-types";
 import TaskCard from "@/app/components/TaskCard";
 
 export default function Dashboard() {
-    const [name, setName] = useState<string | null>(localStorage.getItem("name"));
+    const [name, setName] = useState<string | null>(null);
     const [tasks, setTasks] = useState<Task[]>([]);
+    
+    useEffect(() => {
+        const name = localStorage.getItem("name");
+        if (name) {
+            setName(name);
+        }
+    }, []);
     
     useEffect(() => {
         console.log("Fetching tasks");
