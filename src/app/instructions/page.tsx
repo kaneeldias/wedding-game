@@ -5,7 +5,7 @@ import Button from "@/app/components/Button";
 
 export default function Home() {
     return (
-        <div className={`flex flex-col items-center justify-center m-5`}>
+        <div className={`flex h-full w-full flex-col items-center justify-center m-5`}>
             <div className={`bg-white shadow-md p-10 mx-10 rounded-sm`}>
                 <div className={`${alexBrush.className} text-emerald-700 text-6xl`}>
                     Instructions
