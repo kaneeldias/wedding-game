@@ -33,12 +33,12 @@ export default function RootLayout({
             className={`w-full ${roboto.className} bg-gradient-to-bl from-emerald-200 to-rose-200`}
         >
         <Image src={'/rb_24436.png'} alt={"Flowers"} width={200} height={200}
-               className={`fixed w-[500px] -bottom-16 -left-20 -rotate-8`}
+               className={`fixed w-[500px] -bottom-16 -left-20 -rotate-8 -z-50`}
                priority={true}
         />
         
         <Image src={'/rb_24436.png'} alt={"Flowers"} width={200} height={200}
-               className={`fixed w-[250px] top-10 -right-28 hue-rotate-90 rotate-[80deg]`}
+               className={`fixed w-[250px] top-10 -right-28 hue-rotate-90 rotate-[80deg] z-50`}
                priority={true}
         />
         <div className={`flex flex-col w-full h-screen text-black ${roboto.className}`}>

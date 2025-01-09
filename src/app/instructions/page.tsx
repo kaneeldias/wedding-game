@@ -1,7 +1,7 @@
 "use client"
 
 import {alexBrush} from "@/fonts";
-import Button from "@/components/Button";
+import Button from "@/app/components/Button";
 
 export default function Home() {
     return (
