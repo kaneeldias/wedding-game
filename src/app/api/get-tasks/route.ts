@@ -1,16 +1,18 @@
-import {promises as fs} from 'fs';
 import {NextResponse} from "next/server";
-import {Task} from "@/types/task-types";
+import {Task, TaskJson} from "@/types/task-types";
+import {tasks as tasks_json} from "../../data/tasks.json";
+
 
 export async function GET() {
-    const file = await fs.readFile('src/app/data/tasks.json', 'utf8');
-    const data = JSON.parse(file);
-    const tasks: Task[] = data.tasks;
-    
-    for (const task of tasks) {
-        task.completed = false;
-        task.bonus = true;
-    }
+    // const file = await fs.readFile(process.cwd() + "app/data/tasks.json", 'utf8');
+    const tasksJson: TaskJson[] = tasks_json;
+    const tasks: Task[] = tasksJson.map((task) => {
+        return {
+            ...task,
+            bonus: false,
+            completed: false
+        };
+    });
     
     return NextResponse.json(tasks);
 }
