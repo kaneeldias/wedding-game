@@ -20,7 +20,7 @@ export default function NameModal(props: Props) {
         } else {
             open()
         }
-    }, []);
+    });
     
     function updateName(name: string) {
         setNameInput(name);

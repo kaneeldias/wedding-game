@@ -1,6 +1,6 @@
 import {NextRequest} from "next/server";
 import {TaskJson, TextTaskJson} from "@/types/task-types";
-import {tasks as tasks_json} from "../../../data/tasks.json";
+import tasks from "../../../data/tasks.json";
 import {SubmissionType, TextSubmissionType} from "@/types/submission-types";
 import {ANSWER_CORRECT, ANSWER_INCORRECT, TASK_NOT_FOUND} from "@/constants/http-response-constants";
 import {DynamoDBClient, PutItemCommand} from "@aws-sdk/client-dynamodb";
@@ -16,7 +16,7 @@ const dynamoDBClientConfigs = {
 const dynamoDBClient = new DynamoDBClient(dynamoDBClientConfigs);
 
 export async function POST(request: NextRequest, {params}: { params: Promise<{ challengeId: string }> }) {
-    const tasksJson: TaskJson[] = tasks_json as TaskJson[];
+    const tasksJson: TaskJson[] = tasks.tasks as TaskJson[];
     const challengeId = (await params).challengeId;
     const data: SubmissionType = await request.json();
     const username = data.username;

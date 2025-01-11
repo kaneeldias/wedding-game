@@ -26,3 +26,10 @@ export type UploadTaskJson = TaskBase & {
 export type TaskJson = TextTaskJson | UploadTaskJson
 
 export type TaskWithoutAnswerJson = TextTaskWithoutAnswerJson | UploadTaskJson
+
+export type CompletedTask = {
+    "user-challenge-id": string,
+    user: string,
+    challenge: string,
+    timestamp: number
+}

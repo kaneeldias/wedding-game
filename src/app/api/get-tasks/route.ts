@@ -1,17 +1,30 @@
 import {NextResponse} from "next/server";
 import {Task, TaskJson} from "@/types/task-types";
-import {tasks as tasks_json} from "../../data/tasks.json";
+import tasks from "../../data/tasks.json";
+import {getCompletedTasks} from "@/utils/task-utls";
 
 
 export async function GET() {
-    // const file = await fs.readFile(process.cwd() + "app/data/tasks.json", 'utf8');
-    const tasksJson: TaskJson[] = tasks_json;
-    const tasks: Task[] = tasksJson.map((task) => {
+    const username = "Kaneel";
+    const tasksJson: TaskJson[] = tasks.tasks as TaskJson[];
+    const completedTasks = await getCompletedTasks();
+    
+    const processedTasks: Task[] = tasksJson.map((task) => {
+        const completed = (completedTasks.find(completedTask => completedTask.challenge === task.id && completedTask.user === username)) != undefined;
+        const firstThree = completedTasks.filter(completedTask => completedTask.challenge === task.id).sort((a, b) => a.timestamp - b.timestamp).slice(0, 3);
+        
+        let bonus = false;
+        if (completed) {
+            bonus = firstThree.find(task => task.user === username) != undefined;
+        } else {
+            bonus = firstThree.length < 3;
+        }
+        
         return {
             ...task,
-            bonus: false,
-            completed: false
+            bonus: bonus,
+            completed: completed
         };
     });
-    return NextResponse.json(tasks);
+    return NextResponse.json(processedTasks);
 }

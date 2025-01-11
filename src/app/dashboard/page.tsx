@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {alexBrush} from "@/fonts";
 import {Task} from "@/types/task-types";
 import TaskCard from "@/app/components/TaskCard";
+import PointsBar from "@/app/components/PointsBar";
 
 export default function Dashboard() {
     const [name, setName] = useState<string | null>(null);
@@ -21,15 +22,28 @@ export default function Dashboard() {
         console.log("Fetching tasks");
         fetch("/api/get-tasks")
         .then((res) => res.json())
-        .then((data) => setTasks(data));
+        .then((data) => {
+            const sorted = data.sort((a: Task, b: Task) => {
+                if (a.completed && !b.completed) return 1;
+                if (!a.completed && b.completed) return -1;
+                return 0;
+            });
+            setTasks(sorted)
+        });
     }, []);
     
     return (
         <>
             <div className={`flex flex-col p-5 w-full`}>
-                <div className={`${alexBrush.className} text-emerald-700 text-4xl mb-10`}>
-                    Welcome {name}!
+                <div className={`mb-10`}>
+                    <div className={`${alexBrush.className} text-emerald-700 text-4xl mb-5`}>
+                        Welcome {name}!
+                    
+                    </div>
+                    
+                    <PointsBar/>
                 </div>
+                
                 
                 <div className={`flex flex-col w-full justify-center`}>
                     

@@ -7,9 +7,10 @@ type Props = {
 
 export default function TaskCard(props: Props) {
     const task = props.task;
+    const opacity = task.completed ? "" : "";
     
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder className={`w-full flex flex-row`}>
+        <Card shadow="sm" padding="lg" radius="md" withBorder className={`w-full flex flex-row ${opacity}`}>
             <Card.Section>
                 <Image
                     src={task.photo}
@@ -22,7 +23,7 @@ export default function TaskCard(props: Props) {
                 <Text fw={700}>{task.title}</Text>
                 <div className={`flex flex-row space-x-2`}>
                     <Badge color="green">{task.points}</Badge>
-                    {task.bonus && <Badge color="orange">Bonus</Badge>}
+                    {task.bonus && <Badge color="orange">{task.points / 2}</Badge>}
                 </div>
             </Group>
             
@@ -30,11 +31,19 @@ export default function TaskCard(props: Props) {
                 {task.description}
             </Text>
             
-            <a href={`/submit/${task.id}`} rel="noreferrer">
-                <Button fullWidth mt="md" radius="md">
-                    Submit challenge
+            {!task.completed &&
+                <a href={`/submit/${task.id}`} rel="noreferrer">
+                    <Button fullWidth mt="md" radius="md">
+                        Submit challenge
+                    </Button>
+                </a>
+            }
+            
+            {task.completed &&
+                <Button fullWidth mt="md" radius="md" disabled>
+                    Challenge completed
                 </Button>
-            </a>
+            }
         
         
         </Card>
