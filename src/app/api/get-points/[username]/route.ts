@@ -2,7 +2,7 @@ import {NextRequest, NextResponse} from "next/server";
 import {TaskJson} from "@/types/task-types";
 import tasks from "../../../data/tasks.json";
 import {Points} from "@/types/points-types";
-import {getCompletedTasks} from "@/utils/task-utls";
+import {getCompletedTasks} from "@/utils/task-utils";
 
 export async function GET(request: NextRequest, {params}: { params: Promise<{ username: string }> }) {
     const username = (await params).username;

@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {Task, TaskJson} from "@/types/task-types";
 import tasks from "../../data/tasks.json";
-import {getCompletedTasks} from "@/utils/task-utls";
+import {getCompletedTasks} from "@/utils/task-utils";
 
 
 export async function GET() {
