@@ -3,4 +3,9 @@ export type TextSubmissionType = {
     answer: string;
 }
 
-export type SubmissionType = TextSubmissionType;
+export type UploadSubmissionType = {
+    username: string;
+    file: File;
+}
+
+export type SubmissionType = TextSubmissionType | UploadSubmissionType;

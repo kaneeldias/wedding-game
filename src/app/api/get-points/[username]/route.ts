@@ -12,14 +12,15 @@ export async function GET(request: NextRequest, {params}: { params: Promise<{ us
     let points = 0;
     let bonusPoints = 0;
     for (const completedTask of completedTasks) {
-        const task = tasksJson.find(task => task.id === completedTask.challenge);
         if (completedTask.user != username) continue;
+        
+        const task = tasksJson.find(task => task.id === completedTask.challenge);
         if (task == undefined) continue;
         points += task.points;
         
         const firstThree = completedTasks.filter(task => task.challenge === completedTask.challenge).sort((a, b) => a.timestamp - b.timestamp).slice(0, 3);
         if (firstThree.find(task => task.user === username)) {
-            bonusPoints += points / 2
+            bonusPoints += task.points / 2
         }
     }
     

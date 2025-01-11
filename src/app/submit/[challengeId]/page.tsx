@@ -8,6 +8,7 @@ import Image from "next/image";
 import NameModal from "@/app/components/NameModal";
 import {useEffect, useState} from "react";
 import {useParams} from "next/navigation";
+import ChallengeSubmissionUpload from "@/app/components/ChallengeSubmissionUpload";
 
 export default function SubmitChallengePage() {
     const params = useParams<({ challengeId: string })>();
@@ -49,8 +50,9 @@ export default function SubmitChallengePage() {
                                 }
 
                             </div>
-
-                            <ChallengeSubmissionText challengeId={task.id}/>
+                            
+                            {task.type == "text" && <ChallengeSubmissionText challengeId={task.id}/>}
+                            {task.type == "upload" && <ChallengeSubmissionUpload challengeId={task.id}/>}
                         </div>
                     </div>
 

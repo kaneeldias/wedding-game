@@ -7,15 +7,7 @@ import TaskCard from "@/app/components/TaskCard";
 import PointsBar from "@/app/components/PointsBar";
 
 export default function Dashboard() {
-    const [name, setName] = useState<string | null>(null);
     const [tasks, setTasks] = useState<Task[]>([]);
-    
-    useEffect(() => {
-        const name = localStorage.getItem("name");
-        if (name) {
-            setName(name);
-        }
-    }, []);
     
     useEffect(() => {
         fetch("/api/get-tasks?username=" + localStorage.getItem("name"))
@@ -49,7 +41,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-            <NameModal setName={setName}/>
+            <NameModal/>
         </>
     );
 }

@@ -21,7 +21,7 @@ export default function ErrorModal(props: Props) {
                         Please find and complain to Kaneel
                     </div>
                 </div>
-                <Button variant="filled" onClick={props.close}>Yay!</Button>
+                <Button variant="filled" onClick={props.close}>okay :(</Button>
             </div>
         </Modal>
     );
