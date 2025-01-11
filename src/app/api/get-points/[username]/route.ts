@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import {TaskJson} from "@/types/task-types";
-import tasks from "../../../data/tasks.json";
+import tasks from "@/data/tasks.json";
 import {Points} from "@/types/points-types";
 import {getCompletedTasks} from "@/utils/task-utils";
 

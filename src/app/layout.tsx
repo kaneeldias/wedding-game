@@ -7,7 +7,7 @@ import {ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider} from 
 import {Suspense} from "react";
 
 export const metadata: Metadata = {
-    title: "Rasika & Savidu",
+    title: "Rasika & Savidu's Wedding",
     description: "The Wedding Game",
 };
 

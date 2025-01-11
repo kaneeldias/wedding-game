@@ -1,6 +1,6 @@
 import {NextRequest} from "next/server";
 import {TaskJson, TextTaskJson} from "@/types/task-types";
-import tasks from "../../../data/tasks.json";
+import tasks from "@/data/tasks.json";
 import {SubmissionType, TextSubmissionType} from "@/types/submission-types";
 import {ANSWER_CORRECT, ANSWER_INCORRECT, TASK_NOT_FOUND} from "@/constants/http-response-constants";
 import {DynamoDBClient, PutItemCommand} from "@aws-sdk/client-dynamodb";

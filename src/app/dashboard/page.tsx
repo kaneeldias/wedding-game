@@ -19,7 +19,7 @@ export default function Dashboard() {
     
     useEffect(() => {
         console.log("Fetching tasks");
-        fetch("/api/get-tasks")
+        fetch("/api/get-tasks?username=" + localStorage.getItem("name"))
         .then((res) => res.json())
         .then((data) => {
             const sorted = data.sort((a: Task, b: Task) => {
