@@ -13,7 +13,7 @@ export async function GET() {
         const completed = (completedTasks.find(completedTask => completedTask.challenge === task.id && completedTask.user === username)) != undefined;
         const firstThree = completedTasks.filter(completedTask => completedTask.challenge === task.id).sort((a, b) => a.timestamp - b.timestamp).slice(0, 3);
         
-        let bonus = false;
+        let bonus;
         if (completed) {
             bonus = firstThree.find(task => task.user === username) != undefined;
         } else {
