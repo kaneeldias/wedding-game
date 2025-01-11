@@ -2,7 +2,6 @@
 
 import NameModal from "@/app/components/NameModal";
 import {useEffect, useState} from "react";
-import {alexBrush} from "@/fonts";
 import {Task} from "@/types/task-types";
 import TaskCard from "@/app/components/TaskCard";
 import PointsBar from "@/app/components/PointsBar";
@@ -36,11 +35,6 @@ export default function Dashboard() {
         <>
             <div className={`flex flex-col p-5 w-full`}>
                 <div className={`mb-10`}>
-                    <div className={`${alexBrush.className} text-emerald-700 text-4xl mb-5`}>
-                        Welcome {name}!
-                    
-                    </div>
-                    
                     <PointsBar/>
                 </div>
                 
