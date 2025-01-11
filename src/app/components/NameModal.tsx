@@ -5,7 +5,7 @@ import {useDisclosure} from "@mantine/hooks";
 import {useEffect, useState} from "react";
 
 type Props = {
-    setName: (name: string) => void;
+    setName?: (name: string) => void;
 }
 
 export default function NameModal(props: Props) {
@@ -33,7 +33,7 @@ export default function NameModal(props: Props) {
     
     function submitName() {
         localStorage.setItem("name", nameInput);
-        props.setName(nameInput);
+        if (props.setName) props.setName(nameInput);
         close();
     }
     

@@ -13,6 +13,5 @@ export async function GET() {
             completed: false
         };
     });
-    
     return NextResponse.json(tasks);
 }

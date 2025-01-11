@@ -30,9 +30,11 @@ export default function TaskCard(props: Props) {
                 {task.description}
             </Text>
             
-            <Button fullWidth mt="md" radius="md">
-                Submit challenge
-            </Button>
+            <a href={`/submit/${task.id}`} rel="noreferrer">
+                <Button fullWidth mt="md" radius="md">
+                    Submit challenge
+                </Button>
+            </a>
         
         
         </Card>
