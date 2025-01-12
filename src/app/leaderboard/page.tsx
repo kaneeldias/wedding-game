@@ -2,6 +2,8 @@ import {Card, Table, TableData} from "@mantine/core";
 import {getPoints} from "@/utils/points-utils";
 import PointsBar from "@/app/components/PointsBar";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Leaderboard() {
     const points = await getPoints();
     const sortedPoints = Object.entries(points).sort((a, b) => b[1] - a[1]);
