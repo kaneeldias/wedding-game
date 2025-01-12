@@ -5,6 +5,7 @@ import {roboto} from "@/fonts";
 import '@mantine/core/styles.css';
 import {ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider} from "@mantine/core";
 import {Suspense} from "react";
+import '@mantine/carousel/styles.css';
 
 export const metadata: Metadata = {
     title: "Rasika & Savidu's Wedding",

@@ -11,9 +11,13 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.726.1",
     "@aws-sdk/client-s3": "^3.726.1",
+    "@mantine/carousel": "^7.15.3",
     "@mantine/core": "^7.15.3",
     "@mantine/hooks": "^7.15.3",
     "@tabler/icons-react": "^3.28.1",
+    "embla-carousel-auto-scroll": "^8.5.2",
+    "embla-carousel-autoplay": "^7.1.0",
+    "embla-carousel-react": "^7.1.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
