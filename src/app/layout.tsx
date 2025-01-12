@@ -42,7 +42,7 @@ export default function RootLayout({
                priority={true}
         />
         <div
-            className={`flex flex-col min-h-screen w-full text-black ${roboto.className} pb-32 items-center justify-center`}>
+            className={`flex flex-col min-h-screen w-full text-black ${roboto.className} pb-32 items-center justify-start`}>
             <MantineProvider theme={theme}>
                 {children}
             </MantineProvider>

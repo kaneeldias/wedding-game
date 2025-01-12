@@ -48,9 +48,10 @@ export default function PointsBar() {
                         </Progress.Section>
                     </Progress.Root>
 
-                    <div className={`flex flex-row space-x-5 pt-2`}>
-                        <a href={"/instructions"}><Button size={"xs"}>Instructions</Button></a>
-                        <a href={"/leaderboard"}><Button size={"xs"}>Leaderboard</Button></a>
+                    <div className={`flex flex-row space-x-3 pt-2`}>
+                        <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Instructions</Button></a>
+                        <a href={"/dashboard"}><Button size={"xs"} color={"dark"}>Challenges</Button></a>
+                        <a href={"/leaderboard"}><Button size={"xs"} color={"dark"}>Leaderboard</Button></a>
                     </div>
                 </div>
             }
