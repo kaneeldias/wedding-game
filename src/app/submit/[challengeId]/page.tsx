@@ -15,21 +15,23 @@ import AutoScroll from "@/lib/embla-auto-scroll";
 export default function SubmitChallengePage() {
     const params = useParams<({ challengeId: string })>();
     const [task, setTask] = useState<Task | null>(null);
-    const [submissions, setSubmissions] = useState([]);
+    const [submissions, setSubmissions] = useState<string[] | null>(null);
     const autoScroll = useRef(AutoScroll({
-        speed: 2, playOnInit: true, stopOnInteraction: true
+        speed: 1, playOnInit: true, stopOnInteraction: true
     }));
     
     useEffect(() => {
         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-task/${params.challengeId}?username=${localStorage.getItem("name")}`)
         .then(res => res.json())
-        .then(setTask);
-    }, [params.challengeId]);
-    
-    useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-task/${params.challengeId}/submissions`)
-        .then(res => res.json())
-        .then(setSubmissions);
+        .then((data) => {
+            setTask(data);
+            console.log(data);
+            if (data.type == "upload") {
+                fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-task/${params.challengeId}/submissions`)
+                .then(res => res.json())
+                .then(setSubmissions);
+            }
+        });
     }, [params.challengeId]);
     
     return (
@@ -71,7 +73,8 @@ export default function SubmitChallengePage() {
 
                 </Card>
 
-                <Image src={`/${task.photo}`} height={16} width={50} alt="Task photo" className={`rounded-md w-full`}/>
+                <Image src={`/${task.photo}`} height={500} width={500} alt="Task photo" priority={true}
+                       className={`rounded-md w-full`}/>
             </>}
             
             {task && submissions &&
