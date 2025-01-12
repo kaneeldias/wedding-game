@@ -1,5 +1,5 @@
-import PointsBar from "../components/PointsBar";
 import {Card, Table, TableData} from "@mantine/core";
+import {getPoints} from "@/utils/points-utils";
 
 export default async function Leaderboard() {
     const points = await getPoints();
@@ -10,16 +10,11 @@ export default async function Leaderboard() {
     
     return (
         <div className={`flex flex-col p-5 w-full space-y-5 items-start h-full`}>
-            <PointsBar/>
+            {/*<PointsBar/>*/}
             <Card shadow="sm" padding="xs" radius="md" withBorder className={`w-full flex flex-row`}>
                 <div className={`font-bold px-2 text-lg`}>Leaderboard</div>
                 <Table data={tableData}/>
             </Card>
         </div>
     )
-}
-
-async function getPoints(): Promise<Record<string, number>> {
-    const pointsJson = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/get-points`);
-    return JSON.parse(await pointsJson.json());
 }
