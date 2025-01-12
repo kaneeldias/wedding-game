@@ -14,7 +14,7 @@ export async function getPoints(): Promise<Record<string, number>> {
         const points = tasksJson.find(task => task.id === completedTask.challenge)?.points || 0;
         
         let bonusPoints = 0;
-        const firstThree = completedTasks.filter(task => task.user === user).slice(0, 3);
+        const firstThree = completedTasks.filter(task => task.challenge === completedTask.challenge).sort((a, b) => a.timestamp - b.timestamp).slice(0, 3);
         const userInFirstThree = firstThree.find(task => task.user === user) !== undefined;
         if (userInFirstThree) {
             bonusPoints += points / 2;
