@@ -9,16 +9,19 @@ export async function GET(request: NextRequest, {params}: { params: Promise<{ us
     const tasksJson: TaskJson[] = tasks.tasks as TaskJson[];
     const completedTasks = await getCompletedTasks();
     
+    let galleryPoints = 0;
     let points = 0;
     let bonusPoints = 0;
     for (const completedTask of completedTasks) {
-        if (completedTask.challenge.includes("photo-gallery")) continue;
-        
         if (completedTask.user != username) continue;
         
         const task = tasksJson.find(task => task.id === completedTask.challenge);
-        if (task == undefined) continue;
-        points += task.points;
+        if (task == undefined) {
+            if ((completedTask.challenge.includes("photo-gallery")) && galleryPoints < 500) galleryPoints += 100;
+            continue;
+        } else {
+            points += task.points;
+        }
         
         const firstThree = completedTasks.filter(task => task.challenge === completedTask.challenge).sort((a, b) => a.timestamp - b.timestamp).slice(0, 3);
         if (firstThree.find(task => task.user === username)) {
@@ -29,7 +32,8 @@ export async function GET(request: NextRequest, {params}: { params: Promise<{ us
     const result: Points = {
         username: username,
         points: points,
-        bonusPoints: bonusPoints
+        bonusPoints: bonusPoints,
+        galleryPoints: galleryPoints
     }
     return NextResponse.json(result);
 }

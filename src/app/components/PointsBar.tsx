@@ -7,7 +7,7 @@ import {alexBrush} from "@/fonts";
 
 export default function PointsBar() {
     const [points, setPoints] = useState<Points | null>(null);
-    const currentUrl = window.location.href;
+    const currentUrl = window != undefined ? window.location.href : "";
     
     useEffect(() => {
         const username = localStorage.getItem("name");
@@ -38,7 +38,8 @@ export default function PointsBar() {
                     <div>
                         <div className={`text-emerald-700 font-bold flex items-center space-x-2`}>
                             <div className={`text-gray-700`}>Points:</div>
-                            <Badge size={"md"} color={"blue"}>{points.points + points.bonusPoints}</Badge>
+                            <Badge size={"md"}
+                                   color={"blue"}>{points.points + points.bonusPoints + points.galleryPoints}</Badge>
                         </div>
                     </div>
                     <Progress.Root size="xl" className={`w-full`}>
@@ -48,7 +49,17 @@ export default function PointsBar() {
                         <Progress.Section value={points.bonusPoints} color="orange">
                             <Progress.Label>{points.bonusPoints}</Progress.Label>
                         </Progress.Section>
+                        <Progress.Section value={points.galleryPoints} color="indigo">
+                            <Progress.Label>{points.galleryPoints}</Progress.Label>
+                        </Progress.Section>
                     </Progress.Root>
+
+                    <div className={`flex flex-row space-x-2`}>
+                        <Badge size={"xs"} color={"teal"} className={`py-1`}>Normal points</Badge>
+                        <Badge size={"xs"} color={"orange"} className={`py-1`}>Bonus points</Badge>
+                        <Badge size={"xs"} color={"indigo"} className={`py-1`}>Gallery points</Badge>
+                        <Badge size={"xs"} color={"blue"} className={`py-1`}>Total points</Badge>
+                    </div>
                 </>}
                 
                 <div className={`flex flex-row space-x-3 pt-2`}>
