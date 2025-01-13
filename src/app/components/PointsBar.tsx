@@ -87,7 +87,6 @@ export default function PointsBar() {
                         <Badge size={"xs"} color={"teal"} className={`py-1`}>Normal points</Badge>
                         <Badge size={"xs"} color={"orange"} className={`py-1`}>Bonus points</Badge>
                         <Badge size={"xs"} color={"indigo"} className={`py-1`}>Gallery points</Badge>
-                        <Badge size={"xs"} color={"blue"} className={`py-1`}>Total points</Badge>
                     </div>
                 </>}
             </div>

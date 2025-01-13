@@ -40,9 +40,19 @@ export default function TaskCard(props: Props) {
             }
             
             {task.completed &&
-                <Button fullWidth mt="md" radius="md" disabled>
-                    Challenge completed
-                </Button>
+                <div className={`flex flex-row space-x-5`}>
+                    <Button fullWidth mt="md" radius="md" disabled>
+                        Challenge completed
+                    </Button>
+                    
+                    {task.type == "upload" &&
+                        <a href={`/submit/${task.id}`} rel="noreferrer">
+                            <Button fullWidth mt="md" radius="md">
+                                See submissions
+                            </Button>
+                        </a>
+                    }
+                </div>
             }
         
         
