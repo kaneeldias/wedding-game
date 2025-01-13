@@ -12,6 +12,8 @@ export async function GET(request: NextRequest, {params}: { params: Promise<{ us
     let points = 0;
     let bonusPoints = 0;
     for (const completedTask of completedTasks) {
+        if (completedTask.challenge.includes("photo-gallery")) continue;
+        
         if (completedTask.user != username) continue;
         
         const task = tasksJson.find(task => task.id === completedTask.challenge);

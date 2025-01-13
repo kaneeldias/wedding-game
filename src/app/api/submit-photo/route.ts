@@ -1,8 +1,5 @@
 import {NextRequest} from "next/server";
-import {TaskJson, TextTaskJson} from "@/types/task-types";
-import tasks from "@/data/tasks.json";
-import {TextSubmissionType} from "@/types/submission-types";
-import {ANSWER_CORRECT, ANSWER_INCORRECT, TASK_NOT_FOUND} from "@/constants/http-response-constants";
+import {ANSWER_CORRECT} from "@/constants/http-response-constants";
 import {DynamoDBClient, PutItemCommand} from "@aws-sdk/client-dynamodb";
 import {PutObjectCommand, PutObjectCommandInput, S3Client} from "@aws-sdk/client-s3";
 
@@ -16,39 +13,14 @@ const dynamoDBClientConfigs = {
 
 const dynamoDBClient = new DynamoDBClient(dynamoDBClientConfigs);
 
-export async function POST(request: NextRequest, {params}: { params: Promise<{ challengeId: string }> }) {
-    const tasksJson: TaskJson[] = tasks.tasks as TaskJson[];
-    const challengeId = (await params).challengeId;
+export async function POST(request: NextRequest) {
+    const formData = await request.formData();
+    const username = formData.get("username") as string;
+    const file = formData.get("file") as File;
     
-    const task = tasksJson.find(task => task.id === challengeId);
-    if (task === undefined) return TASK_NOT_FOUND;
-    
-    
-    if (task.type == "text") {
-        const data = await request.json();
-        const username = (data as TextSubmissionType).username;
-        
-        const expectedAnswer = (task as TextTaskJson).answer;
-        const answer = (data as TextSubmissionType).answer;
-        if (expectedAnswer.toLowerCase() === answer.toLowerCase()) {
-            await updateAnswersTable(username, challengeId, answer);
-            return ANSWER_CORRECT();
-        }
-        return ANSWER_INCORRECT();
-    }
-    
-    if (task.type == "upload") {
-        const formData = await request.formData();
-        const username = formData.get("username") as string;
-        const file = formData.get("file") as File;
-        
-        const url = await uploadToS3Bucket(file, username, challengeId);
-        await updateAnswersTable(username, challengeId, url);
-        return ANSWER_CORRECT();
-    }
-    
-    return TASK_NOT_FOUND;
-    
+    const url = await uploadToS3Bucket(file, username, `photo-gallery-${Date.now()}`);
+    await updateAnswersTable(username, `photo-gallery-${Date.now()}`, url);
+    return ANSWER_CORRECT();
 }
 
 async function updateAnswersTable(username: string, challengeId: string, value: string) {

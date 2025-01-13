@@ -8,6 +8,8 @@ export async function getPoints(): Promise<Record<string, number>> {
     
     const pointsMap: Record<string, number> = {};
     for (const completedTask of completedTasks) {
+        if (completedTask.challenge.includes("photo-gallery")) continue;
+        
         const user = completedTask.user;
         const currentUserPoints = pointsMap[user] || 0;
         

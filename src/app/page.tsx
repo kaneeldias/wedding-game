@@ -1,7 +1,5 @@
-"use client"
-
 import {alexBrush} from "@/fonts";
-import Button from "@/app/components/Button";
+import {Button} from "@mantine/core";
 
 export default function Home() {
     return (
@@ -9,12 +7,18 @@ export default function Home() {
             <div className={`${alexBrush.className} text-black text-2xl opacity-45`}>
                 Welcome to the wedding of
             </div>
-            <div className={`${alexBrush.className} text-black text-5xl opacity-60`}>
+            <div className={`${alexBrush.className} text-black text-5xl opacity-60 mb-5`}>
                 Rasika & Savidu
             </div>
-            <a href={"/instructions"}>
-                <Button>play the wedding game</Button>
-            </a>
+            
+            <div className={`flex flex-row space-x-5`}>
+                <a href={"/instructions"}>
+                    <Button>play the wedding game</Button>
+                </a>
+                <a href={"/gallery"}>
+                    <Button>view photo gallery</Button>
+                </a>
+            </div>
         </div>
     );
 }

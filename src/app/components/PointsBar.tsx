@@ -7,9 +7,11 @@ import {alexBrush} from "@/fonts";
 
 export default function PointsBar() {
     const [points, setPoints] = useState<Points | null>(null);
+    const currentUrl = window.location.href;
     
     useEffect(() => {
         const username = localStorage.getItem("name");
+        if (!username) return;
         fetch(`/api/get-points/${username}`, {
             method: "GET",
             headers: {
@@ -25,14 +27,14 @@ export default function PointsBar() {
     
     return (
         <>
-            {points &&
-                <div
-                    className={`flex flex-col p-2 bg-white rounded-md items-start w-full z-50 space-y-2 pb-3 shadow-md`}>
-                    <div className={`${alexBrush.className} text-emerald-700 text-4xl`}>
-                        Welcome {localStorage.getItem("name")}!
-
-                    </div>
-
+            <div
+                className={`flex flex-col p-2 bg-white rounded-md items-start w-full z-50 space-y-2 pb-3 shadow-md`}>
+                <div className={`${alexBrush.className} text-emerald-700 text-4xl`}>
+                    Welcome {localStorage.getItem("name")}!
+                
+                </div>
+                
+                {points && <>
                     <div>
                         <div className={`text-emerald-700 font-bold flex items-center space-x-2`}>
                             <div className={`text-gray-700`}>Points:</div>
@@ -47,14 +49,25 @@ export default function PointsBar() {
                             <Progress.Label>{points.bonusPoints}</Progress.Label>
                         </Progress.Section>
                     </Progress.Root>
-
-                    <div className={`flex flex-row space-x-3 pt-2`}>
-                        <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Instructions</Button></a>
-                        <a href={"/dashboard"}><Button size={"xs"} color={"dark"}>Challenges</Button></a>
-                        <a href={"/leaderboard"}><Button size={"xs"} color={"dark"}>Leaderboard</Button></a>
-                    </div>
+                </>}
+                
+                <div className={`flex flex-row space-x-3 pt-2`}>
+                    
+                    {points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Instructions</Button></a>}
+                    
+                    {points && !currentUrl.includes("dashboard") &&
+                        <a href={"/dashboard"}><Button size={"xs"} color={"dark"}>Challenges</Button></a>}
+                    
+                    {points && !currentUrl.includes("leaderboard") &&
+                        <a href={"/leaderboard"}><Button size={"xs"} color={"dark"}>Leaderboard</Button></a>}
+                    
+                    {!points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Play the game</Button></a>}
+                    
+                    {!currentUrl.includes("gallery") &&
+                        <a href={"/gallery"}><Button size={"xs"} color={"dark"}>Photo Gallery</Button></a>}
+                
                 </div>
-            }
+            </div>
         </>
     
     )

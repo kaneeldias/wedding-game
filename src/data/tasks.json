@@ -16,6 +16,15 @@
       "description": "Rasika and Savidu have put a lot of effort into making this day a reality. Show your appreciation by taking a photo of them inside a heart made with your hands (can even be one hand). Upload the photo as proof. Feel free to be creative!",
       "photo": "heart.png",
       "points": 500
+    },
+    {
+      "id": "tiny-person",
+      "type": "text",
+      "title": "Whoa that's tiny person! 👶",
+      "description": "This wedding has like a 160 people (or something like that I can't remember). Some of them are very old (like you), some are very young (like a baby). But there is one guest who is younger than all the others. Find the youngest guest's name.",
+      "photo": "baby.avif",
+      "points": 300,
+      "answer": "Aritha"
     }
   ]
 }

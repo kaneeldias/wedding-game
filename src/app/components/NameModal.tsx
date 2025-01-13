@@ -35,6 +35,7 @@ export default function NameModal(props: Props) {
         localStorage.setItem("name", nameInput);
         if (props.setName) props.setName(nameInput);
         close();
+        window.location.reload();
     }
     
     return (
