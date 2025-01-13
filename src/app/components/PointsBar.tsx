@@ -7,15 +7,18 @@ import {alexBrush} from "@/fonts";
 
 export default function PointsBar() {
     const [points, setPoints] = useState<Points | null>(null);
-    let currentUrl = "";
-    if (typeof window !== "undefined") {
-        currentUrl = window.location.href;
-    }
+    const [currentUrl, setCurrentUrl] = useState("");
+    const [name, setName] = useState("");
     
-    let name = "";
-    if (typeof localStorage !== "undefined") {
-        name = " " + localStorage.getItem("name");
-    }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setCurrentUrl(window.location.href);
+        }
+        
+        if (typeof localStorage !== "undefined") {
+            setName(localStorage.getItem("name") || "");
+        }
+    }, []);
     
     useEffect(() => {
         const username = localStorage.getItem("name");
