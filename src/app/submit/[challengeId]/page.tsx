@@ -2,15 +2,15 @@
 
 import {alexBrush} from "@/fonts";
 import {Task} from "@/types/task-types";
-import {Badge, Card, Loader} from "@mantine/core";
+import {Badge, Card, Image, Loader} from "@mantine/core";
 import ChallengeSubmissionText from "@/app/components/ChallengeSubmissionText";
-import Image from "next/image";
 import NameModal from "@/app/components/NameModal";
 import {useEffect, useRef, useState} from "react";
 import {useParams} from "next/navigation";
 import ChallengeSubmissionUpload from "@/app/components/ChallengeSubmissionUpload";
 import {Carousel} from "@mantine/carousel";
 import AutoScroll from "@/lib/embla-auto-scroll";
+import PointsBar from "@/app/components/PointsBar";
 
 export default function SubmitChallengePage() {
     const params = useParams<({ challengeId: string })>();
@@ -36,6 +36,7 @@ export default function SubmitChallengePage() {
     
     return (
         <div className={`flex h-full w-full flex-col items-center justify-center p-5 space-y-5`}>
+            <PointsBar/>
             
             {task && <>
                 <div className={`${alexBrush.className} text-emerald-700 text-4xl text-left w-full`}>
@@ -73,7 +74,7 @@ export default function SubmitChallengePage() {
 
                 </Card>
 
-                <Image src={`/${task.photo}`} height={500} width={500} alt="Task photo" priority={true}
+                <Image radius={"md"} src={`/${task.photo}`} height={500} width={500} alt="Task photo"
                        className={`rounded-md w-full`}/>
             </>}
             
@@ -96,12 +97,10 @@ export default function SubmitChallengePage() {
                             return (
                                 <Carousel.Slide key={index}>
                                     <div
-                                        className={`flex flex-row h-full items-center justify-center`}>
-                                        <Image src={submission} alt={"Submitted photo"}
-                                               width={0}
-                                               height={0}
-                                               sizes="100vw"
-                                               style={{width: 'auto', height: '100%'}} // optional
+                                        className={`flex flex-row h-full items-center justify-center rounded-full`}>
+                                        <Image radius={"md"} src={submission} alt={"Photo"}
+                                               className={`aspect-square rounded-full`}
+                                               fit="cover"
                                         />
                                     </div>
                                 </Carousel.Slide>

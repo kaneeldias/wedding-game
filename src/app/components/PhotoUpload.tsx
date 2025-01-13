@@ -5,6 +5,7 @@ import {useState} from "react";
 import ErrorModal from "@/app/components/ErrorModal";
 import {IconPhoto} from "@tabler/icons-react";
 import PhotoUploadedModal from "@/app/components/PhotoUploadedModel";
+import {compressImage} from "@/utils/photo-utils";
 
 export default function PhotoUpload() {
     const [answerStatus, setAnswerStatus] = useState("");
@@ -36,10 +37,12 @@ export default function PhotoUpload() {
         </>
     );
     
-    function submitChallenge() {
+    async function submitChallenge() {
         setLoading(true);
         const formData = new FormData();
-        formData.append("file", file as File);
+        const compressedFile = await compressImage(file as File);
+        const fileName = file?.name || "photo.jpg";
+        formData.append("file", compressedFile as File, fileName);
         formData.append("username", localStorage.getItem("name") || "");
         
         fetch(`/api/submit-photo/`, {

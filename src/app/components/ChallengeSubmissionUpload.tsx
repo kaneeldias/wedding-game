@@ -7,6 +7,7 @@ import AnswerIncorrectModal from "@/app/components/AnswerIncorrectModal";
 import ErrorModal from "@/app/components/ErrorModal";
 import {redirect} from "next/navigation";
 import {IconPhoto} from "@tabler/icons-react";
+import {compressImage} from "@/utils/photo-utils";
 
 
 type Props = {
@@ -45,10 +46,12 @@ export default function ChallengeSubmissionUpload(props: Props) {
         </>
     );
     
-    function submitChallenge() {
+    async function submitChallenge() {
         setLoading(true);
         const formData = new FormData();
-        formData.append("file", file as File);
+        const compressedFile = await compressImage(file as File);
+        const fileName = file?.name || "photo.jpg";
+        formData.append("file", compressedFile as File, fileName);
         formData.append("username", localStorage.getItem("name") || "");
         
         fetch(`/api/submit-challenge/${challengeId}`, {

@@ -37,7 +37,25 @@ export default function PointsBar() {
     }, []);
     
     return (
-        <>
+        <div className={`flex flex-col w-full space-y-2`}>
+            <div
+                className={`bg-white bg-opacity-100 flex flex-row space-x-3 p-2 rounded-md w-full justify-start z-50`}>
+                
+                {points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Instructions</Button></a>}
+                
+                {points && !currentUrl.includes("dashboard") &&
+                    <a href={"/dashboard"}><Button size={"xs"} color={"dark"}>Challenges</Button></a>}
+                
+                {points && !currentUrl.includes("leaderboard") &&
+                    <a href={"/leaderboard"}><Button size={"xs"} color={"dark"}>Leaderboard</Button></a>}
+                
+                {!points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Play the game</Button></a>}
+                
+                {!currentUrl.includes("gallery") &&
+                    <a href={"/gallery"}><Button size={"xs"} color={"dark"}>Photo Gallery</Button></a>}
+            
+            </div>
+            
             <div
                 className={`flex flex-col p-2 bg-white rounded-md items-start w-full z-50 space-y-2 pb-3 shadow-md`}>
                 <div className={`${alexBrush.className} text-emerald-700 text-4xl`}>
@@ -72,25 +90,9 @@ export default function PointsBar() {
                         <Badge size={"xs"} color={"blue"} className={`py-1`}>Total points</Badge>
                     </div>
                 </>}
-                
-                <div className={`flex flex-row space-x-3 pt-2`}>
-                    
-                    {points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Instructions</Button></a>}
-                    
-                    {points && !currentUrl.includes("dashboard") &&
-                        <a href={"/dashboard"}><Button size={"xs"} color={"dark"}>Challenges</Button></a>}
-                    
-                    {points && !currentUrl.includes("leaderboard") &&
-                        <a href={"/leaderboard"}><Button size={"xs"} color={"dark"}>Leaderboard</Button></a>}
-                    
-                    {!points && <a href={"/instructions"}><Button size={"xs"} color={"dark"}>Play the game</Button></a>}
-                    
-                    {!currentUrl.includes("gallery") &&
-                        <a href={"/gallery"}><Button size={"xs"} color={"dark"}>Photo Gallery</Button></a>}
-                
-                </div>
             </div>
-        </>
+        
+        </div>
     
     )
 }

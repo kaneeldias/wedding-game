@@ -41,6 +41,8 @@ export default function Gallery() {
                                        className={`shadow-md aspect-square`}
                                        fit="cover"
                                 />
+                                {/*<Image src={photo} alt={"Photo"} objectFit={"cover"} width={200} height={200}*/}
+                                {/*       className={`shadow-md aspect-square rounded-md`}/>*/}
                             </div>
                         ))}
                     </div>
