@@ -25,6 +25,46 @@
       "photo": "baby.avif",
       "points": 300,
       "answer": "Aritha"
+    },
+    {
+      "id": "group-selfie",
+      "type": "upload",
+      "title": "But first... let me take a (group) selfie 🤳",
+      "description": "I'm sure you didn't attend this wedding alone. If you did, I'm really sorry. I can be your friend <3. But anyway, if you're in a group - take a group selfie and upload to complete this challenge! Note: two group members cannot upload the same picture.",
+      "photo": "selfie.png",
+      "points": 250
+    },
+    {
+      "id": "so-yummy",
+      "type": "upload",
+      "title": "Wow that's so yummy! 🍽️",
+      "description": "Sri Lankan weddings are known for their delicious food. Hopefully this wedding is one of them. Take a photo of your plate with the food you're eating. Try to get the happy couple in the background if you can ;)",
+      "photo": "yummy.png",
+      "points": 150
+    },
+    {
+      "id": "guests-across-borders",
+      "type": "upload",
+      "title": "Guests across borders 🌍",
+      "description": "This wedding is a melting pot of cultures. We counted, and there are guests from 11 different countries Take a photo with a guest who is from a different country than you.",
+      "photo": "borders.png",
+      "points": 400
+    },
+    {
+      "id": "time-to-dance",
+      "type": "upload",
+      "title": "Time to dance! 💃🕺",
+      "description": "The DJ is playing your favorite song. You can't resist the urge to dance. Take a photo of the dance floor. See if you can get the bride and groom in the background!",
+      "photo": "dance.png",
+      "points": 400
+    },
+    {
+      "id": "chat-gpt",
+      "type": "upload",
+      "title": "In this world of AI 🤖",
+      "description": "The world is changing. AI is taking over. But we can still have fun with it! Ask ChatGPT to give Rasika and Savidu its best wishes for their life ahead. Upload a screenshot of the chat.",
+      "photo": "robot.png",
+      "points": 200
     }
   ]
 }
