@@ -4,10 +4,10 @@
       "id": "count-the-tables",
       "type": "text",
       "title": "Count the tables 1\uFE0F⃣2\uFE0F⃣3\uFE0F⃣",
-      "description": "Guests may come and go (especially after lunch), but the tables will always be there. Go around the room and count the number of tables where a guest may sit.",
+      "description": "Guests may come and go (especially after lunch), but the tables will always be there. Go around the room and count the number of tables where a guest may sit. (do not count the head table - they are not guests)",
       "photo": "tables.png",
       "points": 100,
-      "answer": "100"
+      "answer": "22"
     },
     {
       "id": "so-cute",
