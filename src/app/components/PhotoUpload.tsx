@@ -4,16 +4,13 @@ import {Button, FileInput, Image, rem} from "@mantine/core";
 import {useState} from "react";
 import ErrorModal from "@/app/components/ErrorModal";
 import {IconPhoto} from "@tabler/icons-react";
-import {useRouter} from "next/navigation";
 import PhotoUploadedModal from "@/app/components/PhotoUploadedModel";
-
 
 export default function PhotoUpload() {
     const [answerStatus, setAnswerStatus] = useState("");
     const [loading, setLoading] = useState(false);
     const icon = <IconPhoto style={{width: rem(18), height: rem(18)}} stroke={1.5}/>;
     const [file, setFile] = useState<File | null>(null);
-    const router = useRouter();
     
     return (
         <>

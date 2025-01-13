@@ -44,7 +44,10 @@ function isURL(str: string): boolean {
     try {
         new URL(str);
         return true;
-    } catch (_) {
+    } catch (e) {
+        if (e instanceof TypeError) {
+            return false;
+        }
         return false;
     }
 }
