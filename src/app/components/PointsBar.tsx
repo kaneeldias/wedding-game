@@ -7,7 +7,15 @@ import {alexBrush} from "@/fonts";
 
 export default function PointsBar() {
     const [points, setPoints] = useState<Points | null>(null);
-    const currentUrl = window != undefined ? window.location.href : "";
+    let currentUrl = "";
+    if (typeof window !== "undefined") {
+        currentUrl = window.location.href;
+    }
+    
+    let name = "";
+    if (typeof localStorage !== "undefined") {
+        name = " " + localStorage.getItem("name");
+    }
     
     useEffect(() => {
         const username = localStorage.getItem("name");
@@ -30,7 +38,7 @@ export default function PointsBar() {
             <div
                 className={`flex flex-col p-2 bg-white rounded-md items-start w-full z-50 space-y-2 pb-3 shadow-md`}>
                 <div className={`${alexBrush.className} text-emerald-700 text-4xl`}>
-                    Welcome {localStorage.getItem("name")}!
+                    Welcome {name}!
                 
                 </div>
                 
