@@ -2,18 +2,40 @@
 
 import PointsBar from "@/app/components/PointsBar";
 import {useEffect, useState} from "react";
-import {Image, Loader} from '@mantine/core';
+import {Button, Image, Loader} from '@mantine/core';
 import {alexBrush} from "@/fonts";
 import PhotoUpload from "@/app/components/PhotoUpload";
 
 export default function Gallery() {
     const [photos, setPhotos] = useState([]);
+    const [name, setName] = useState("");
     
     useEffect(() => {
         getPhotos().then((data) => {
             setPhotos(data);
         });
+        
+        setName(localStorage.getItem("name") || "");
     }, []);
+    
+    function deletePhoto(photo: string[]) {
+        fetch("/api/delete-photo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: photo[0],
+                username: name
+            })
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.success) {
+                window.location.reload();
+            }
+        });
+    }
     
     return (
         <>
@@ -36,11 +58,17 @@ export default function Gallery() {
                     <div className={`flex flex-wrap`}>
                         {photos.map((photo, index) => (
                             <div key={index}
-                                 className={`flex w-1/2 items-center justify-center p-2 aspect-square`}>
-                                <Image radius={"md"} src={photo} alt={"Photo"}
+                                 className={`flex flex-col w-1/2 items-center justify-center p-2 aspect-square`}>
+                                <Image radius={"md"} src={photo[1]} alt={"Photo"}
                                        className={`shadow-md aspect-square`}
                                        fit="cover"
                                 />
+                                {name.includes("admin") &&
+                                    <div className={`sticky top-0`}>
+                                        <Button color={"red"} size={"xs"}
+                                                onClick={() => deletePhoto(photo)}>Delete</Button>
+                                    </div>
+                                }
                                 {/*<Image src={photo} alt={"Photo"} objectFit={"cover"} width={200} height={200}*/}
                                 {/*       className={`shadow-md aspect-square rounded-md`}/>*/}
                             </div>

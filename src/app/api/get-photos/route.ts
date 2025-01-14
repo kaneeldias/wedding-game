@@ -26,13 +26,14 @@ async function getPhotos() {
         const photoLinks: string[][] = [];
         data.Items!.forEach(function (item) {
             if (!item.value) return;
+            const key = item["user-challenge-id"].S || "";
             const value = item.value.S || "";
             const timestamp = item.timestamp.N || "";
-            if (isURL(value)) photoLinks.push([value, timestamp]);
+            if (isURL(value)) photoLinks.push([key, value, timestamp]);
         });
         
-        photoLinks.sort((a, b) => parseInt(b[1]) - parseInt(a[1]));
-        return photoLinks.map(link => link[0]);
+        photoLinks.sort((a, b) => parseInt(b[2]) - parseInt(a[2]));
+        return photoLinks.map(link => [link[0], link[1]]);
     } catch (error) {
         console.error("Error fetching items from DynamoDB table:", error);
         throw error;
