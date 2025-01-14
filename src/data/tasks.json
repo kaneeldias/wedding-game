@@ -18,13 +18,13 @@
       "points": 500
     },
     {
-      "id": "tiny-person",
+      "id": "thank-you",
       "type": "text",
-      "title": "Whoa that's tiny person! 👶",
-      "description": "This wedding has like a 160 people (or something like that I can't remember). Some of them are very old (like you), some are very young (like a baby). But there is one guest who is younger than all the others. Find the youngest guest's name.",
-      "photo": "baby.avif",
-      "points": 300,
-      "answer": "Aritha"
+      "title": "Thank you to _______ 🙏",
+      "description": "A lot of people have put in a lot of effort behind the scenes to make this day a reality. The bride and groom would thank many of them in their thank you speech - including the bridal dresser. Who was it?",
+      "photo": "dresser.png",
+      "points": 250,
+      "answer": "Unforgettable Brides"
     },
     {
       "id": "group-selfie",
@@ -46,7 +46,7 @@
       "id": "guests-across-borders",
       "type": "upload",
       "title": "Guests across borders 🌍",
-      "description": "This wedding is a melting pot of cultures. We counted, and there are guests from 11 different countries Take a photo with a guest who is from a different country than you.",
+      "description": "This wedding is a melting pot of cultures. We counted, and there are guests from 8 different countries Take a photo with a guest who is from a different country than you.",
       "photo": "borders.png",
       "points": 400
     },
@@ -65,6 +65,15 @@
       "description": "The world is changing. AI is taking over. But we can still have fun with it! Ask ChatGPT to give Rasika and Savidu its best wishes for their life ahead. Upload a screenshot of the chat.",
       "photo": "robot.png",
       "points": 200
+    },
+    {
+      "id": "first-dance",
+      "type": "text",
+      "title": "The first dance 💑",
+      "description": "In all (most) weddings, the bride and groom have their first dance. And in most weddings, the song which plays is usually by Ed Sheeran. Luckily Rasika and Savidu aren't that cringe. What song did they dance to?",
+      "photo": "first-dance.png",
+      "points": 300,
+      "answer": "Dandelions"
     }
   ]
 }

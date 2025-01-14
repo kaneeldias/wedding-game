@@ -3,7 +3,7 @@ import {Button} from "@mantine/core";
 
 export default function Home() {
     return (
-        <div className={`flex h-screen w-full flex-col items-center justify-center`}>
+        <div className={`flex min-h-screen w-full flex-col items-center justify-center`}>
             <div className={`${alexBrush.className} text-black text-2xl opacity-45`}>
                 Welcome to the wedding of
             </div>
