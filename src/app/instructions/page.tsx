@@ -1,8 +1,7 @@
 "use client"
 
 import {alexBrush} from "@/fonts";
-import Button from "@/app/components/Button";
-import {Badge} from "@mantine/core";
+import {Badge, Button} from "@mantine/core";
 
 export default function Home() {
     return (
@@ -45,9 +44,14 @@ export default function Home() {
                         </li>
                     </ul>
                 </div>
-            </div>
+                
+                <div className={`flex flex-row w-full items-stretch justify-center mt-14`}>
+                    <a href={"/dashboard"}>
+                        <Button color="teal">let&#39;s play</Button>
+                    </a>
+                </div>
             
-            <a href={"/dashboard"}><Button>let&#39;s play</Button></a>
+            </div>
         </div>
     );
 }
